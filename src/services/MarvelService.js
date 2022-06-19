@@ -21,10 +21,18 @@ class MarvelService {
         return this._transformCharacter(res.data.results[0]);
     }
 
+    checkDecription = async () => {
+
+    }
+
     _transformCharacter = (char) => {
+        if(!char.description){
+            char.description = `Описание у данного персонажа отсутствует.`
+        }
+        // console.log(char.desription);
         return {
             name: char.name,
-            desription: char.desription,
+            description: char.description,
             thumbnail: char.thumbnail.path + "."
             + char.thumbnail.extension,
             homepage: char.urls[0].url,
